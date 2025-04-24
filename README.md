@@ -1,4 +1,4 @@
-**NORSK 🇳🇴👇🏻**
+### NORSK 🇳🇴👇🏻
 Antisakkader er evnen til å undertrykke en øyebevegelse.. Dette er et program laget for opptrening etter blant annet hjernerystelse. Målet med denne øvelsen er å se på prikken som IKKE blinker. Se på den røde prikken i midten mellom hvert blink. 
 
 
@@ -12,7 +12,7 @@ For spørsmål og tilbakemeldinger, send mail til johannesminge1998@gmail.com
 
 ---
 
-**ENGLISH 🇺🇸👇🏻**
+### ENGLISH 🇺🇸👇🏻
 Antisaccades is the brains ability to supress eye movement. This program is made for rehabilitation after concussions, among other things. The goal of this exercise is to look at the dot that is NOT blinking. Look at the red dot in the centrer between each blink.
 
 How to use it: 
