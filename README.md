@@ -8,8 +8,7 @@ Hvordan programmet fungerer:
 - "Vertical / horizontal" endrer orienteringen til prikkene mellom horisontal og vertikal.
 
 For spørsmål og tilbakemeldinger, send mail til johannesminge1998@gmail.com
-
-\\
+\
 
 
 ENGLISH 🇺🇸👇🏻
