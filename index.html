@@ -1,134 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blinking Dots - Toggle Layout</title>
-  <style>
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background-color: black;
-    }
-
-    .dot {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: white;
-      opacity: 1;
-      transition: opacity 0.2s;
-      position: absolute;
-    }
-
-    .horizontal #left-dot {
-      top: 50%;
-      left: 15%;
-      transform: translateY(-50%);
-    }
-
-    .horizontal #right-dot {
-      top: 50%;
-      right: 15%;
-      transform: translateY(-50%);
-    }
-
-    .horizontal .cross {
-      top: calc(50% + 0px);
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .vertical #left-dot {
-      top: 5%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .vertical #right-dot {
-      top: 90%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .vertical .cross {
-      top: 50% + 0px;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .cross {
-      width: 6px;
-      height: 6px;
-      background-color: red;
-      position: absolute;
-      border-radius: 50%;
-    }
-
-    .controls {
-      position: absolute;
-      top: 5%;
-      left: 5%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
-
-    button, input {
-      font-size: 16px;
-      margin: 5px;
-      padding: 10px;
-    }
-  </style>
-</head>
-<body class="horizontal">
-  <div class="controls">
-    <input type="number" id="reps-input" placeholder="Enter repetitions" min="1" value="30">
-    <button onclick="startBlinking()">Start</button>
-    <button onclick="stopBlinking()">Stop</button>
-    <button onclick="toggleLayout()">Vertical / horizontal</button>
-  </div>
-
-  <div class="dot" id="left-dot"></div>
-  <div class="dot" id="right-dot"></div>
-  <div class="cross"></div>
-
-  <script>
-    const leftDot = document.getElementById("left-dot");
-    const rightDot = document.getElementById("right-dot");
-    const repsInput = document.getElementById("reps-input");
-    let interval;
-    let count = 0;
-    let maxReps = 50;
-
-    function startBlinking() {
-      stopBlinking();
-      count = 0;
-      maxReps = parseInt(repsInput.value) || 30;
-      interval = setInterval(() => {
-        if (count >= maxReps) {
-          stopBlinking();
-          return;
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Blinking Dots</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: black;
+            color: white;
+            font-family: sans-serif;
         }
-        const blinkLeft = Math.random() < 0.5;
-        const dot = blinkLeft ? leftDot : rightDot;
-        dot.style.opacity = 0;
-        setTimeout(() => dot.style.opacity = 1, 200);
-        count++;
-      }, 1250);
-    }
 
-    function stopBlinking() {
-      clearInterval(interval);
-    }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
 
-    function toggleLayout() {
-      document.body.classList.toggle("horizontal");
-      document.body.classList.toggle("vertical");
-    }
-  </script>
+        .controls {
+            padding: 10px 20px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            background-color: #111;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            z-index: 1;
+        }
+
+        .canvas {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dot {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            opacity: 1;
+            transition: opacity 0.2s;
+            position: absolute;
+        }
+
+        .horizontal #left-dot {
+            left: 15%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .horizontal #right-dot {
+            right: 15%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .vertical #left-dot {
+            top: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .vertical #right-dot {
+            bottom: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cross {
+            width: 6px;
+            height: 6px;
+            background-color: red;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+
+        button, input, select {
+            font-size: 16px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <input type="number" id="reps-input" placeholder="Antall repetisjoner" value="30">
+        <input type="number" id="duration-input" placeholder="Blinking duration (ms)" value="200">
+        <select id="orientation-toggle">
+            <option value="horizontal">Horizontal</option>
+            <option value="vertical">Vertical</option>
+        </select>
+        <button onclick="startBlinking()">Start</button>
+        <button onclick="stopBlinking()">Stop</button>
+    </div>
+    <div class="canvas horizontal" id="canvas">
+        <div class="dot" id="left-dot"></div>
+        <div class="dot" id="right-dot"></div>
+        <div class="cross"></div>
+    </div>
+
+    <script>
+        const leftDot = document.getElementById("left-dot");
+        const rightDot = document.getElementById("right-dot");
+        const repsInput = document.getElementById("reps-input");
+        const durationInput = document.getElementById("duration-input");
+        const orientationToggle = document.getElementById("orientation-toggle");
+        const canvas = document.getElementById("canvas");
+
+        let interval;
+        let count = 0;
+        let maxReps = 50;
+        let blinkDuration = 200;
+
+        function startBlinking() {
+            stopBlinking();
+            count = 0;
+            maxReps = parseInt(repsInput.value) || 30;
+            blinkDuration = parseInt(durationInput.value) || 200;
+
+            canvas.classList.remove("horizontal", "vertical");
+            canvas.classList.add(orientationToggle.value);
+
+            interval = setInterval(() => {
+                if (count >= maxReps) {
+                    stopBlinking();
+                    return;
+                }
+
+                const blinkLeft = Math.random() < 0.5;
+                const dot = blinkLeft ? leftDot : rightDot;
+
+                dot.style.opacity = 0;
+                setTimeout(() => {
+                    dot.style.opacity = 1;
+                }, blinkDuration);
+
+                count++;
+            }, blinkDuration + 1000);
+        }
+
+        function stopBlinking() {
+            clearInterval(interval);
+        }
+    </script>
 </body>
 </html>
