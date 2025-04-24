@@ -7,10 +7,13 @@ Hvordan programmet fungerer:
 - Start og stop: starter eller stopper programmet.
 - "Vertical / horizontal" endrer orienteringen til prikkene mellom horisontal og vertikal.
 
-For spørsmål og tilbakemeldinger, send mail til johannesminge1998@gmail.com  \
+For spørsmål og tilbakemeldinger, send mail til johannesminge1998@gmail.com 
+<br>  
+<br>  
 
 
 ---
+<br>  
 
 ### English 🇺🇸
 Antisaccades is the brains ability to supress eye movement. This program is made for rehabilitation after concussions, among other things. The goal of this exercise is to look at the dot that is NOT blinking. Look at the red dot in the centrer between each blink.
