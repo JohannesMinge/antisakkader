@@ -9,7 +9,7 @@ Hvordan programmet fungerer:
 
 For spørsmål og tilbakemeldinger, send mail til johannesminge1998@gmail.com
 
-/newline
+\\
 
 
 ENGLISH 🇺🇸👇🏻
