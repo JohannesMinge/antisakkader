@@ -7,7 +7,7 @@ Hvordan programmet fungerer:
 - Start og stop: starter eller stopper programmet.
 - "Vertical / horizontal" endrer orienteringen til prikkene mellom horisontal og vertikal.
 
-For spørsmål og tilbakemeldinger, send mail til johannesminge1998@gmail.com  
+For spørsmål og tilbakemeldinger, send mail til johannesminge1998@gmail.com  \
 
 
 ---
